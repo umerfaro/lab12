@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ahmedkhan935/Lab10-11-SCD.git'
+                git 'https://github.com/umerfaro/lab12.git'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Tag docker image') {
             steps {
-                bat 'docker tag my-app ahmed9350/my-app'
+                bat 'docker tag my-app umer12314sr/my-app'
             }
         }   
 
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     bat 'docker login -u %DOCKER_USER% -p %DOCKER_PASS%'
-                    bat 'docker push ahmed9350/my-app'
+                    bat 'docker push umer12314sr/my-app'
                 }
             }
         }
